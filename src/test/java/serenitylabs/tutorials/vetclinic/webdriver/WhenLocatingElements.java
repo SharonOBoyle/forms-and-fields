@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +14,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class WhenLocatingElements {
@@ -26,9 +24,6 @@ public class WhenLocatingElements {
         System.setProperty("webdriver.chrome.driver", "/Users/sharonoboyle/libs/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        URL testSiteUrl = getClass().getResource("/site/elements.html");
-//        URL testSiteUrl = getClass().getResource("file:///Users/sharonoboyle/forms-and-fields/src/main/resources/site/elements.html");
-//        driver.get(testSiteUrl.toString());
         driver.get("file:///Users/sharonoboyle/forms-and-fields/src/main/resources/site/elements.html");
     }
 
@@ -36,8 +31,6 @@ public class WhenLocatingElements {
     public void find_an_element_by_id() {
         // TODO: Find the first name field by id
         WebElement firstName = driver.findElement(By.id("first-name"));
-//        firstName.sendKeys("Sharon");
-//        assertThat(firstName.getText(), equalTo("Sharon"));
         assertThat(firstName.getAttribute("placeholder"), equalTo("Enter the first name here"));
     }
 
@@ -78,6 +71,9 @@ public class WhenLocatingElements {
         WebElement lastName = driver.findElement(By.name("last-name"));
         firstName.sendKeys("Sarah-Jane");
         lastName.sendKeys("Smith");
+// Not sure what to do here, the code below is not working
+//        assertThat(firstName.getText(), equalTo("Sarah-Jane"));
+//        assertThat((lastName.getText()), equalTo("Smith"));
     }
 
     @Test
